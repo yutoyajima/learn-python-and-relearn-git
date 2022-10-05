@@ -1,8 +1,6 @@
 # じゃんけんします
-
 import random
 
-# print(opponent)
 def get_players_hand():
     first_message = "Enter 'rock', 'sissors' or 'paper': "
     your_input = input(first_message)
@@ -14,43 +12,48 @@ def get_players_hand():
     elif your_input == "paper":
         your_hand = 3
     else:
-        your_hand = 0
+        print("An error occuered")
+        get_players_hand()
     return your_hand
-        
+
 
 
 def get_opponent_hand():
     opp_hand = random.randint(1,3)
     return opp_hand
 
-# players_hand = get_players_hand()
-# print(players_hand)
+
 
 def judge(hand_a, hand_b):
     culc = hand_a - hand_b
-    message = ""
 
     if culc == -1 or culc == 2:
-        message = "YOU WIN"
+        did_win = True
+        return did_win
     elif culc == -2 or culc == 1:
-        message = "YOU LOSE"
+        did_win = False
+        return did_win
     elif culc == 0:
-        message = "DRAW"
-
-    return message
-
+        print("AIKO DE!")
+        janken()
 
 
-def show_result():
+
+
+def show_result(win):
+    if win:
+        print("YOU WIN")
+    elif win == False:
+        print("YOU LOSE")
+
+
+def janken():
     players_hand = get_players_hand()
     opponent_hand = get_opponent_hand()
+    show_result(judge(hand_a=players_hand, hand_b=opponent_hand))
+    
 
-    shown_message = judge(hand_a=players_hand, hand_b=opponent_hand)
-    print(shown_message)
-
-show_result()
-# print(result)
-
+janken()
 
 
 
