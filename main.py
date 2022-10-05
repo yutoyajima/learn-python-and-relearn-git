@@ -1,3 +1,60 @@
+# じゃんけんします
+
+import random
+
+# print(opponent)
+def get_players_hand():
+    first_message = "Enter 'rock', 'sissors' or 'paper': "
+    your_input = input(first_message)
+
+    if your_input == "rock":
+        your_hand = 1
+    elif your_input == "sissors":
+        your_hand = 2
+    elif your_input == "paper":
+        your_hand = 3
+    else:
+        your_hand = 0
+    return your_hand
+        
+
+
+def get_opponent_hand():
+    opp_hand = random.randint(1,3)
+    return opp_hand
+
+# players_hand = get_players_hand()
+# print(players_hand)
+
+def judge(hand_a, hand_b):
+    culc = hand_a - hand_b
+    message = ""
+
+    if culc == -1 or culc == 2:
+        message = "YOU WIN"
+    elif culc == -2 or culc == 1:
+        message = "YOU LOSE"
+    elif culc == 0:
+        message = "DRAW"
+
+    return message
+
+
+
+def show_result():
+    players_hand = get_players_hand()
+    opponent_hand = get_opponent_hand()
+
+    shown_message = judge(hand_a=players_hand, hand_b=opponent_hand)
+    print(shown_message)
+
+show_result()
+# print(result)
+
+
+
+
+
 # Classの復習
 # print("Hello world")
 # class Agent:
@@ -29,21 +86,21 @@
 # >>> randlist(3)
 # [43, 2, 89]
 
-import random
+# import random
 
-# print(random.randint(1,19))
+# # print(random.randint(1,19))
 
-def randlist(num):
+# def randlist(num):
     
-    list = []
+#     list = []
     
-    for i in range(num):
-        i = random.randint(0, 100)
-        list.append(i)
+#     for i in range(num):
+#         i = random.randint(0, 100)
+#         list.append(i)
     
-    print(list)
+#     print(list)
 
-randlist(4)
+# randlist(4)
 
 
 
@@ -63,13 +120,13 @@ randlist(4)
 # >>> randlist(6, lower=20, upper=50)        # 20 から  50 まで
 # [24, 38, 38, 40, 44, 47]
 
-def randlist2(num, lower=0, upper=100):
-    list = []
+# def randlist2(num, lower=0, upper=100):
+#     list = []
 
-    for i in range(num):
-        i = random.randint(lower, upper)
-        list.append(i)
+#     for i in range(num):
+#         i = random.randint(lower, upper)
+#         list.append(i)
     
-    print(list)
+#     print(list)
 
-randlist2(4)
+# randlist2(4)
