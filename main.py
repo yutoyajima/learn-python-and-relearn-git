@@ -14,24 +14,39 @@ def get_players_hand():
     else:
         print("An error occuered")
         get_players_hand()
+    
+    print(f"Your hand: {your_input}")
     return your_hand
 
 
 
 def get_opponent_hand():
     opp_hand = random.randint(1,3)
+    if opp_hand == 1:
+        print("Opponent: rock")
+    elif opp_hand == 2:
+        print("Opponent: sissors")
+    elif opp_hand == 3:
+        print("Opponent: paper")
+
     return opp_hand
 
 
+win_count = 0
+loss_count = 0
 
 def judge(hand_a, hand_b):
     culc = hand_a - hand_b
 
     if culc == -1 or culc == 2:
         did_win = True
+        global win_count
+        win_count = win_count + 1
         return did_win
     elif culc == -2 or culc == 1:
         did_win = False
+        global loss_count
+        loss_count = loss_count + 1
         return did_win
     elif culc == 0:
         print("AIKO DE!")
@@ -39,12 +54,25 @@ def judge(hand_a, hand_b):
 
 
 
-
 def show_result(win):
     if win:
         print("YOU WIN")
+        Continue()
     elif win == False:
         print("YOU LOSE")
+        Continue()
+
+
+
+def Continue():
+    play_again = input("Do you wanna play again? y/n: ")
+    if play_again == "y":
+        janken()
+    elif play_again == "n":
+        print(f"WIN: {win_count}")
+        print(f"LOSS: {loss_count}")
+    else:
+        Continue()
 
 
 def janken():
